@@ -1,5 +1,5 @@
-var token = "5575016017:AAHU9C2ndJpmb3_bVY-G2VixCD7VNMXDBbI"; // token telegram
-var ssId = "1f1BGztRrQu65WWQUDJYTzR31-xkk_JHAV0L58T76rP4"; // ID spreadsheets
+var token = "xxxx"; // token telegram
+var ssId = "xxxx"; // ID spreadsheets
 var UrlPublish = "https://script.google.com/macros/s/AKfycbz3FdjdrCsAy_TB8fW4DEwWwf-hYQ1_CrjKajecNmsqt07afw0/exec"; // url deploy
 
 var telegramUrl = "https://api.telegram.org/bot" + token;
