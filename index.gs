@@ -1,6 +1,6 @@
 var token = "xxxx"; // token telegram
 var ssId = "xxxx"; // ID spreadsheets
-var UrlPublish = "https://script.google.com/macros/s/AKfycbz3FdjdrCsAy_TB8fW4DEwWwf-hYQ1_CrjKajecNmsqt07afw0/exec"; // url deploy
+var UrlPublish = "xxxx"; // url deploy
 
 var telegramUrl = "https://api.telegram.org/bot" + token;
 const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -45,22 +45,22 @@ function doPost(e) {
   var stringJson = e.postData.getDataAsString();
   var updates = JSON.parse(stringJson);
     if(updates.message.text){
-      sendText(updates.message.chat.id,CariDataDariIDSheet(updates.message.text)); 
+      sendText(updates.message.chat.id,findDataBySheetId(updates.message.text)); 
     }
   }
 }  
 //--------------------------------------------------------------------------------------------------------------
 //ambil data dari google spreadsheets
 //menentukan sheets mana yang akan diambil
-function AmbilSheet1(){
+function getSheet(){
   var rangeName = sheetName + "!A2:G";
   var rows = Sheets.Spreadsheets.Values.get(ssId, rangeName).values;
   return rows;
 }
 
 //menentukan kolom mana yang akan diambil
-function CariDataDariIDSheet(IDdata){
-  var dataSheet = AmbilSheet1(); 
+function findDataBySheetId(IDdata){
+  var dataSheet = getSheet(); 
   let totalAll = dataSheet.reduce((prev, row) => parseInt(prev) + parseInt(row[3]),0);
   for (var row = 0; row < dataSheet.length; row++) {
     if(dataSheet[row][0].toLowerCase() == IDdata.toLowerCase()){ 
